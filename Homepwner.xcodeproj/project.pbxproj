@@ -11,6 +11,7 @@
 		1561464E1B5CC0E80009BA5F /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1561464C1B5CC0E80009BA5F /* DetailViewController.xib */; };
 		156146521B5CF9970009BA5F /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 156146501B5CF9970009BA5F /* DatePickerViewController.m */; };
 		156146531B5CF9970009BA5F /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 156146511B5CF9970009BA5F /* DatePickerViewController.xib */; };
+		156146561B5D143F0009BA5F /* ImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 156146551B5D143F0009BA5F /* ImageStore.m */; };
 		7D882A921B4EA4DF0084D381 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D882A911B4EA4DF0084D381 /* main.m */; };
 		7D882A951B4EA4DF0084D381 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D882A941B4EA4DF0084D381 /* AppDelegate.m */; };
 		7D882A981B4EA4DF0084D381 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D882A971B4EA4DF0084D381 /* ViewController.m */; };
@@ -40,6 +41,8 @@
 		1561464F1B5CF9970009BA5F /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		156146501B5CF9970009BA5F /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		156146511B5CF9970009BA5F /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
+		156146541B5D143F0009BA5F /* ImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageStore.h; sourceTree = "<group>"; };
+		156146551B5D143F0009BA5F /* ImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageStore.m; sourceTree = "<group>"; };
 		7D882A8C1B4EA4DF0084D381 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D882A901B4EA4DF0084D381 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D882A911B4EA4DF0084D381 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -116,6 +119,8 @@
 				7D882AB91B4EAA830084D381 /* Item.m */,
 				7D882ABB1B4EACF00084D381 /* ItemStore.h */,
 				7D882ABC1B4EACF00084D381 /* ItemStore.m */,
+				156146541B5D143F0009BA5F /* ImageStore.h */,
+				156146551B5D143F0009BA5F /* ImageStore.m */,
 				7D882A991B4EA4DF0084D381 /* Main.storyboard */,
 				7D882A9C1B4EA4DF0084D381 /* Images.xcassets */,
 				7D882A9E1B4EA4DF0084D381 /* LaunchScreen.xib */,
@@ -257,6 +262,7 @@
 				7D882A981B4EA4DF0084D381 /* ViewController.m in Sources */,
 				7D882ABD1B4EACF00084D381 /* ItemStore.m in Sources */,
 				7D882AB71B4EA6F80084D381 /* ItemViewController.m in Sources */,
+				156146561B5D143F0009BA5F /* ImageStore.m in Sources */,
 				7D882A951B4EA4DF0084D381 /* AppDelegate.m in Sources */,
 				7D882A921B4EA4DF0084D381 /* main.m in Sources */,
 				1561464D1B5CC0E80009BA5F /* DetailViewController.m in Sources */,

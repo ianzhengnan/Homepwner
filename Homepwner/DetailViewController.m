@@ -9,16 +9,42 @@
 #import "DetailViewController.h"
 #import "Item.h"
 #import "DatePickerViewController.h"
+#import "ImageStore.h"
 
-@interface DetailViewController ()
+@interface DetailViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *SerialNumberField;
 @property (weak, nonatomic) IBOutlet UITextField *valueField;
 @property (weak, nonatomic) IBOutlet UILabel *dateLable;
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
+
 @end
 
 @implementation DetailViewController
+
+- (IBAction)takePicture:(id)sender {
+    
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }else{
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    imagePicker.delegate = self;
+    
+    //Place image picker on the screen
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+
+    [textField resignFirstResponder];
+    return YES;
+}
 
 - (instancetype)init{
     
@@ -45,19 +71,24 @@
     
 }
 
-- (IBAction)pressDone:(UITextField *)sender {
-    
-    [sender resignFirstResponder];
-}
-
-- (IBAction)namePressDone:(UITextField *)sender {
-    [sender resignFirstResponder];
-}
-
 - (IBAction)closeKeyBoard:(UIControl *)sender {
-    [self.nameField resignFirstResponder];
-    [self.SerialNumberField resignFirstResponder];
-    [self.valueField resignFirstResponder];
+//    [self.nameField resignFirstResponder];
+//    [self.SerialNumberField resignFirstResponder];
+//    [self.valueField resignFirstResponder];
+    [self.view endEditing:YES];
+}
+
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    
+    //store the image in the ImageStore for this key
+    [[ImageStore sharedStore] setImage:image forKey:self.item.itemKey];
+    
+    self.imageView.image = image;
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -78,6 +109,12 @@
     }
     
     self.dateLable.text = [dateFormatter stringFromDate:item.dateCreated];
+    
+    NSString *imageKey = self.item.itemKey;
+    
+    UIImage *imageToDisplay = [[ImageStore sharedStore] imageForKey:imageKey];
+    
+    self.imageView.image = imageToDisplay;
 }
 
 
