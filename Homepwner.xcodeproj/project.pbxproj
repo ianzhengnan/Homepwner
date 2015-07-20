@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		156146491B58E2D40009BA5F /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 156146481B58E2D40009BA5F /* HeaderView.xib */; };
 		7D882A921B4EA4DF0084D381 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D882A911B4EA4DF0084D381 /* main.m */; };
 		7D882A951B4EA4DF0084D381 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D882A941B4EA4DF0084D381 /* AppDelegate.m */; };
 		7D882A981B4EA4DF0084D381 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D882A971B4EA4DF0084D381 /* ViewController.m */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		156146481B58E2D40009BA5F /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		7D882A8C1B4EA4DF0084D381 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D882A901B4EA4DF0084D381 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D882A911B4EA4DF0084D381 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				7D882A971B4EA4DF0084D381 /* ViewController.m */,
 				7D882AB51B4EA6F80084D381 /* ItemViewController.h */,
 				7D882AB61B4EA6F80084D381 /* ItemViewController.m */,
+				156146481B58E2D40009BA5F /* HeaderView.xib */,
 				7D882AB81B4EAA830084D381 /* Item.h */,
 				7D882AB91B4EAA830084D381 /* Item.m */,
 				7D882ABB1B4EACF00084D381 /* ItemStore.h */,
@@ -217,6 +220,7 @@
 				7D882A9B1B4EA4DF0084D381 /* Main.storyboard in Resources */,
 				7D882AA01B4EA4DF0084D381 /* LaunchScreen.xib in Resources */,
 				7D882A9D1B4EA4DF0084D381 /* Images.xcassets in Resources */,
+				156146491B58E2D40009BA5F /* HeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +438,7 @@
 				7D882AB11B4EA4DF0084D381 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7D882AB21B4EA4DF0084D381 /* Build configuration list for PBXNativeTarget "HomepwnerTests" */ = {
 			isa = XCConfigurationList;
@@ -442,6 +447,7 @@
 				7D882AB41B4EA4DF0084D381 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
