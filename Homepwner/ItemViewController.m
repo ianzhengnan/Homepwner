@@ -9,26 +9,39 @@
 #import "ItemViewController.h"
 #import "Item.h"
 #import "ItemStore.h"
+#import "DetailViewController.h"
 
 @interface ItemViewController ()
 
-@property (nonatomic, strong) IBOutlet UIView *headerView;
 
 @end
 
 @implementation ItemViewController
 
-- (UIView *)headerView{
-
-    //if you have not loaded the headerView yet...
-    if (!_headerView) {
-        [[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self options:nil];
+- (instancetype)init{
+    self = [super initWithStyle:UITableViewStylePlain];
+    
+    if (self) {
+        UINavigationItem *navItem = self.navigationItem;
+        navItem.title = @"Homepwner";
+        
+        //create a new bar button item that will send addNewItem: to
+        //ItemsViewController
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                             target:self
+                                                                             action:@selector(addNewItem:)];
+        
+        navItem.rightBarButtonItem = bbi;
+        
+        navItem.leftBarButtonItem = self.editButtonItem;
+        
     }
-    return _headerView;
+    
+    return self;
 }
 
-- (IBAction)addNewItem:(id)sender{
-
+- (void)addNewItem:(id)sender{
+    
     Item *newItem = [[ItemStore sharedStore] createItem];
     
     NSInteger lastRow = [[[ItemStore sharedStore] allItems] indexOfObject:newItem];
@@ -36,33 +49,6 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
     
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
-}
-
-
-- (IBAction)toggleEditingMode:(id)sender{
-
-    if (self.isEditing) {
-        [sender setTitle:@"Edit" forState:UIControlStateNormal];
-        
-        [self setEditing:NO animated:YES];
-    }else{
-    
-        [sender setTitle:@"Done" forState:UIControlStateNormal];
-        
-        [self setEditing:YES animated:YES];
-    }
-}
-
-- (instancetype)init{
-    self = [super initWithStyle:UITableViewStylePlain];
-    
-//    if (self) {
-//        for (int i = 0; i < 5; i++) {
-//            [[ItemStore sharedStore] createItem];
-//        }
-//    }
-    
-    return self;
 }
 
 - (instancetype)initWithStyle:(UITableViewStyle)style{
@@ -73,11 +59,13 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section{
     
-    if ([[[ItemStore sharedStore] allItems] count] == 0) {
-        return 1;
-    }else{
-        return [[[ItemStore sharedStore] allItems] count] + 1;
-    }
+//    if ([[[ItemStore sharedStore] allItems] count] == 0) {
+//        return 1;
+//    }else{
+//        return [[[ItemStore sharedStore] allItems] count] + 1;
+//    }
+    
+    return [[[ItemStore sharedStore] allItems] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -91,12 +79,15 @@
     
     NSArray *items = [[ItemStore sharedStore] allItems];
     
-    if (items.count == indexPath.row + 1) {
-        Item *item = items[indexPath.row];
-        cell.textLabel.text = [item description];
-    }else{
-        cell.textLabel.text = @"No more items!";
-    }
+//    if (items.count == indexPath.row + 1) {
+//        Item *item = items[indexPath.row];
+//        cell.textLabel.text = [item description];
+//    }else{
+//        cell.textLabel.text = @"No more items!";
+//    }
+    
+    Item *item = items[indexPath.row];
+    cell.textLabel.text = [item description];
     
     return cell;
 
@@ -115,23 +106,42 @@
         [[ItemStore sharedStore] removeItem:item];
         
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    DetailViewController *detailViewController = [[DetailViewController alloc] init];
+    
+    NSArray *items = [[ItemStore sharedStore] allItems];
+    
+    Item *selectedItem = items[indexPath.row];
+    
+    detailViewController.item = selectedItem;
+    
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
     
-    NSInteger des;
+//    NSInteger des;
+//    
+//    NSArray *items = [[ItemStore sharedStore] allItems];
+//    if (destinationIndexPath.row >= items.count) {
+//        des = items.count;
+//    }else{
+//        des = destinationIndexPath.row;
+//    }
     
-    NSArray *items = [[ItemStore sharedStore] allItems];
-    if (destinationIndexPath.row >= items.count) {
-        des = items.count;
-    }else{
-        des = destinationIndexPath.row;
-    }
     
+    [[ItemStore sharedStore] moveItemAtIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
     
-    [[ItemStore sharedStore] moveItemAtIndex:sourceIndexPath.row toIndex:des];
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)viewDidLoad{
@@ -139,9 +149,6 @@
     [super viewDidLoad];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
-    
-    UIView *header = self.headerView;
-    [self.tableView setTableHeaderView:header];
     
 }
 
