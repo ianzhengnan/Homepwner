@@ -24,6 +24,43 @@
 
 @implementation DetailViewController
 
+- (void)viewDidLoad{
+
+    [super viewDidLoad];
+    
+    UIImageView *iv = [[UIImageView alloc] initWithImage:nil];
+    
+    iv.contentMode = UIViewContentModeScaleAspectFill;
+    
+    iv.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.view addSubview:iv];
+    
+    self.imageView = iv;
+    
+    //set the vertical priorities to be less than
+    //those of the other subviews
+    [self.imageView setContentHuggingPriority:200 forAxis:UILayoutConstraintAxisVertical];
+    [self.imageView setContentCompressionResistancePriority:700 forAxis:UILayoutConstraintAxisVertical];
+    
+    NSDictionary *nameMap = @{@"imageView" : self.imageView,
+                              @"dateLabel" : self.dateLable,
+                              @"toolbar" : self.toolBar};
+    
+    NSArray *horizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[imageView]-0-|"
+                                                                             options:0
+                                                                             metrics:nil
+                                                                               views:nameMap];
+    
+    NSArray *verticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[dateLabel]-[imageView]-[toolbar]"
+                                                                           options:0
+                                                                           metrics:nil
+                                                                             views:nameMap];
+    [self.view addConstraints:horizontalConstraints];
+    [self.view addConstraints:verticalConstraints];
+    
+}
+
 - (IBAction)takePicture:(id)sender {
     
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
