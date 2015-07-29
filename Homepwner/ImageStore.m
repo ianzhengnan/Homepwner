@@ -20,9 +20,17 @@
 
     static ImageStore *sharedStore = nil;
     
-    if (!sharedStore) {
+//    if (!sharedStore) {
+//        sharedStore = [[self alloc] initPrivate];
+//    }
+    
+    // for thread safe
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
         sharedStore = [[self alloc] initPrivate];
-    }
+    });
+    
     return sharedStore;
 }
 

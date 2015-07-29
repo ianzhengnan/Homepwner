@@ -258,14 +258,14 @@
 
 - (void)save:(id)sender{
     
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:self.dismissBlock];
 }
 
 - (void)cancel:(id)sender{
     
     [[ItemStore sharedStore] removeItem:self.item];
     
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:self.dismissBlock];
 }
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{

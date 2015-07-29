@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) Item *item;
 
+@property (nonatomic, copy) void (^dismissBlock)(void);
+
 - (instancetype)initForNewItem:(BOOL)isNew;
 
 @end
