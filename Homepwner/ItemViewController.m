@@ -44,11 +44,19 @@
     
     Item *newItem = [[ItemStore sharedStore] createItem];
     
-    NSInteger lastRow = [[[ItemStore sharedStore] allItems] indexOfObject:newItem];
+//    NSInteger lastRow = [[[ItemStore sharedStore] allItems] indexOfObject:newItem];
+//    
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
+//    
+//    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
+    DetailViewController *detailViewController = [[DetailViewController alloc] initForNewItem:YES];
     
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+    detailViewController.item = newItem;
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+    
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 - (instancetype)initWithStyle:(UITableViewStyle)style{
@@ -111,7 +119,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    DetailViewController *detailViewController = [[DetailViewController alloc] init];
+//    DetailViewController *detailViewController = [[DetailViewController alloc] init];
+
+    DetailViewController *detailViewController = [[DetailViewController alloc] initForNewItem:NO];
     
     NSArray *items = [[ItemStore sharedStore] allItems];
     

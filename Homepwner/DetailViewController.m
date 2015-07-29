@@ -10,8 +10,9 @@
 #import "Item.h"
 #import "DatePickerViewController.h"
 #import "ImageStore.h"
+#import "ItemStore.h"
 
-@interface DetailViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate>
+@interface DetailViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate,UITextFieldDelegate, UIPopoverControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *SerialNumberField;
 @property (weak, nonatomic) IBOutlet UITextField *valueField;
@@ -19,6 +20,9 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
+
+@property (strong, nonatomic) UIPopoverController *imagePickerPopover;
 
 @end
 
@@ -61,7 +65,35 @@
     
 }
 
+- (void)prepareForOrientation:(UIInterfaceOrientation)orientation{
+
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        return;
+    }
+    
+    //
+    if (UIInterfaceOrientationIsLandscape(orientation)) {
+        self.imageView.hidden = YES;
+        self.cameraButton.enabled = NO;
+    }else{
+        self.imageView.hidden = NO;
+        self.cameraButton.enabled = YES;
+    }
+}
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
+    
+    [self prepareForOrientation:toInterfaceOrientation];
+}
+
 - (IBAction)takePicture:(id)sender {
+    
+    if ([self.imagePickerPopover isPopoverVisible]) {
+        //if the popover is already up, get rid of it
+        [self.imagePickerPopover dismissPopoverAnimated:YES];
+        self.imagePickerPopover = nil;
+        return;
+    }
     
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     
@@ -74,7 +106,26 @@
     imagePicker.delegate = self;
     
     //Place image picker on the screen
-    [self presentViewController:imagePicker animated:YES completion:nil];
+    //check if iPad device before instantiating the popover controller
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        //create a new popover controller that will display the imagepicker
+        self.imagePickerPopover = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
+        
+        self.imagePickerPopover.delegate = self;
+        
+        //Display the popover controller; sender
+        //is the camera bar button item
+        [self.imagePickerPopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }else{
+        //Place image picker on the screen
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController{
+    
+    NSLog(@"User dismissed popover");
+    self.imagePickerPopover = nil;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -125,7 +176,16 @@
     
     self.imageView.image = image;
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    //Do I have a popover?
+    if (self.imagePickerPopover) {
+        //Dismiss it
+        [self.imagePickerPopover dismissPopoverAnimated:YES];
+        self.imagePickerPopover = nil;
+    }else{
+    
+        //Dismiss the modal image picker
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -159,6 +219,10 @@
 
     [super viewWillDisappear:animated];
     
+    UIInterfaceOrientation io = [[UIApplication sharedApplication] statusBarOrientation];
+    
+    [self prepareForOrientation:io];
+    
     [self.view endEditing:YES];
     
     //'save' changes to item
@@ -172,6 +236,43 @@
 
     _item = item;
     self.navigationItem.title = _item.itemName;
+}
+
+- (instancetype)initForNewItem:(BOOL)isNew{
+ 
+    self = [super initWithNibName:nil bundle:nil];
+    
+    if (self) {
+        if (isNew) {
+            UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(save:)];
+            
+            self.navigationItem.rightBarButtonItem = doneItem;
+            
+            UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
+            
+            self.navigationItem.leftBarButtonItem = cancelItem;
+        }
+    }
+    return self;
+}
+
+- (void)save:(id)sender{
+    
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)cancel:(id)sender{
+    
+    [[ItemStore sharedStore] removeItem:self.item];
+    
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+
+    @throw [NSException exceptionWithName:@"Wrong initializer" reason:@"Use initForNewItem" userInfo:nil];
+    
+    return nil;
 }
 
 @end
