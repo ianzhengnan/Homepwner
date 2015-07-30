@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Item : NSObject
+@interface Item : NSObject <NSCoding>
 
 @property (nonatomic, copy)NSString *itemName;
 @property (nonatomic, copy)NSString *serialNumber;
