@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 zhengnan. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface Item : NSObject <NSCoding>
 
@@ -17,6 +17,7 @@
 
 @property (nonatomic, copy) NSString *itemKey;
 
+@property (nonatomic, strong)UIImage *thumbnail;
 
 + (instancetype)randomItem;
 
@@ -26,5 +27,7 @@
                     serialNumber:(NSString *)sNumber;
 
 - (instancetype)initWithItemName:(NSString *)name;
+
+- (void)setThumbnailFromImage:(UIImage *)image;
 
 @end

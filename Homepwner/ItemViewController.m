@@ -10,6 +10,7 @@
 #import "Item.h"
 #import "ItemStore.h"
 #import "DetailViewController.h"
+#import "ItemCell.h"
 
 @interface ItemViewController ()
 
@@ -87,23 +88,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    
-//    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell"];
-    
-    //Get a new or recycled cell
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
+     //Get a new or recycled cell
+    ItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ItemCell" forIndexPath:indexPath];
     
     NSArray *items = [[ItemStore sharedStore] allItems];
-    
-//    if (items.count == indexPath.row + 1) {
-//        Item *item = items[indexPath.row];
-//        cell.textLabel.text = [item description];
-//    }else{
-//        cell.textLabel.text = @"No more items!";
-//    }
-    
+
     Item *item = items[indexPath.row];
-    cell.textLabel.text = [item description];
+    
+    cell.nameLable.text = item.itemName;
+    cell.serialNumberLabel.text = item.serialNumber;
+    cell.valueLabel.text = [NSString stringWithFormat:@"$%d", item.valueInDollars];
     
     return cell;
 
@@ -166,7 +160,11 @@
     
     [super viewDidLoad];
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+    //[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+    
+    UINib *nib = [UINib nibWithNibName:@"ItemCell" bundle:nil];
+    
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"ItemCell"];
     
 }
 

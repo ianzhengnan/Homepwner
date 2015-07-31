@@ -12,6 +12,8 @@
 		156146521B5CF9970009BA5F /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 156146501B5CF9970009BA5F /* DatePickerViewController.m */; };
 		156146531B5CF9970009BA5F /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 156146511B5CF9970009BA5F /* DatePickerViewController.xib */; };
 		156146561B5D143F0009BA5F /* ImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 156146551B5D143F0009BA5F /* ImageStore.m */; };
+		15FF45B71B6B3A24008A7689 /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15FF45B61B6B3A24008A7689 /* ItemCell.m */; };
+		15FF45B91B6B3A75008A7689 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15FF45B81B6B3A75008A7689 /* ItemCell.xib */; };
 		7D882A921B4EA4DF0084D381 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D882A911B4EA4DF0084D381 /* main.m */; };
 		7D882A951B4EA4DF0084D381 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D882A941B4EA4DF0084D381 /* AppDelegate.m */; };
 		7D882A981B4EA4DF0084D381 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D882A971B4EA4DF0084D381 /* ViewController.m */; };
@@ -43,6 +45,9 @@
 		156146511B5CF9970009BA5F /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
 		156146541B5D143F0009BA5F /* ImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageStore.h; sourceTree = "<group>"; };
 		156146551B5D143F0009BA5F /* ImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageStore.m; sourceTree = "<group>"; };
+		15FF45B51B6B3A24008A7689 /* ItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCell.h; sourceTree = "<group>"; };
+		15FF45B61B6B3A24008A7689 /* ItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCell.m; sourceTree = "<group>"; };
+		15FF45B81B6B3A75008A7689 /* ItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 		7D882A8C1B4EA4DF0084D381 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D882A901B4EA4DF0084D381 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D882A911B4EA4DF0084D381 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -115,6 +120,9 @@
 				1561464F1B5CF9970009BA5F /* DatePickerViewController.h */,
 				156146501B5CF9970009BA5F /* DatePickerViewController.m */,
 				156146511B5CF9970009BA5F /* DatePickerViewController.xib */,
+				15FF45B51B6B3A24008A7689 /* ItemCell.h */,
+				15FF45B61B6B3A24008A7689 /* ItemCell.m */,
+				15FF45B81B6B3A75008A7689 /* ItemCell.xib */,
 				7D882AB81B4EAA830084D381 /* Item.h */,
 				7D882AB91B4EAA830084D381 /* Item.m */,
 				7D882ABB1B4EACF00084D381 /* ItemStore.h */,
@@ -237,6 +245,7 @@
 			files = (
 				7D882A9B1B4EA4DF0084D381 /* Main.storyboard in Resources */,
 				156146531B5CF9970009BA5F /* DatePickerViewController.xib in Resources */,
+				15FF45B91B6B3A75008A7689 /* ItemCell.xib in Resources */,
 				7D882AA01B4EA4DF0084D381 /* LaunchScreen.xib in Resources */,
 				1561464E1B5CC0E80009BA5F /* DetailViewController.xib in Resources */,
 				7D882A9D1B4EA4DF0084D381 /* Images.xcassets in Resources */,
@@ -257,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15FF45B71B6B3A24008A7689 /* ItemCell.m in Sources */,
 				156146521B5CF9970009BA5F /* DatePickerViewController.m in Sources */,
 				7D882ABA1B4EAA830084D381 /* Item.m in Sources */,
 				7D882A981B4EA4DF0084D381 /* ViewController.m in Sources */,
