@@ -171,6 +171,8 @@
 
     UIImage *image = info[UIImagePickerControllerOriginalImage];
     
+    [self.item setThumbnailFromImage:image];
+    
     //store the image in the ImageStore for this key
     [[ImageStore sharedStore] setImage:image forKey:self.item.itemKey];
     

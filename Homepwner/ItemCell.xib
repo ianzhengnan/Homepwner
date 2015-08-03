@@ -13,6 +13,15 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ktY-Kx-8uk" id="hec-1O-Ooq">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mYS-Ei-jcA">
+                        <rect key="frame" x="8" y="2" width="40" height="40"/>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="showImage:" destination="ktY-Kx-8uk" eventType="touchUpInside" id="W2r-Qx-OuX"/>
+                        </connections>
+                    </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Spj-ma-WIo">
                         <rect key="frame" x="8" y="2" width="40" height="40"/>
                         <constraints>
@@ -44,6 +53,10 @@
                     <constraint firstItem="oBv-Za-C0d" firstAttribute="top" secondItem="hec-1O-Ooq" secondAttribute="topMargin" constant="-1" id="4UK-6S-FM1"/>
                     <constraint firstItem="oBv-Za-C0d" firstAttribute="leading" secondItem="Spj-ma-WIo" secondAttribute="trailing" constant="8" id="DQc-FB-5mW"/>
                     <constraint firstItem="qrG-wh-6ra" firstAttribute="leading" secondItem="Spj-ma-WIo" secondAttribute="trailing" constant="8" id="Es9-fd-tao"/>
+                    <constraint firstItem="mYS-Ei-jcA" firstAttribute="trailing" secondItem="Spj-ma-WIo" secondAttribute="trailing" id="Ggb-dk-MNo"/>
+                    <constraint firstItem="mYS-Ei-jcA" firstAttribute="top" secondItem="Spj-ma-WIo" secondAttribute="top" id="Ia5-7O-b8h"/>
+                    <constraint firstItem="mYS-Ei-jcA" firstAttribute="leading" secondItem="Spj-ma-WIo" secondAttribute="leading" id="KGQ-ag-btI"/>
+                    <constraint firstItem="mYS-Ei-jcA" firstAttribute="bottom" secondItem="Spj-ma-WIo" secondAttribute="bottom" id="d0I-hK-6co"/>
                     <constraint firstItem="Spj-ma-WIo" firstAttribute="leading" secondItem="hec-1O-Ooq" secondAttribute="leadingMargin" constant="1" id="hTo-Xc-Iev"/>
                     <constraint firstItem="eZx-ET-Qgi" firstAttribute="trailing" secondItem="hec-1O-Ooq" secondAttribute="trailingMargin" constant="2" id="kU1-rj-Bjz"/>
                     <constraint firstItem="qrG-wh-6ra" firstAttribute="top" secondItem="oBv-Za-C0d" secondAttribute="bottom" constant="1" id="otn-Un-ZBz"/>
@@ -56,7 +69,7 @@
                 <outlet property="thumbnailView" destination="Spj-ma-WIo" id="wjt-tX-HjM"/>
                 <outlet property="valueLabel" destination="eZx-ET-Qgi" id="9qx-ik-vRp"/>
             </connections>
-            <point key="canvasLocation" x="430" y="216"/>
+            <point key="canvasLocation" x="473" y="266"/>
         </tableViewCell>
     </objects>
 </document>
