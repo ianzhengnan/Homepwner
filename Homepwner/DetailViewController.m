@@ -24,6 +24,10 @@
 
 @property (strong, nonatomic) UIPopoverController *imagePickerPopover;
 
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *serialNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *valueLabel;
+
 @end
 
 @implementation DetailViewController
@@ -79,6 +83,20 @@
         self.imageView.hidden = NO;
         self.cameraButton.enabled = YES;
     }
+}
+
+- (void)updateFonts{
+
+    UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    
+    self.nameLabel.font = font;
+    self.serialNumberLabel.font = font;
+    self.valueLabel.font = font;
+    self.dateLable.font = font;
+    
+    self.nameField.font = font;
+    self.SerialNumberField.font = font;
+    self.valueField.font = font;
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
@@ -214,6 +232,8 @@
     UIImage *imageToDisplay = [[ImageStore sharedStore] imageForKey:imageKey];
     
     self.imageView.image = imageToDisplay;
+    
+    [self updateFonts];
 }
 
 
@@ -254,8 +274,21 @@
             
             self.navigationItem.leftBarButtonItem = cancelItem;
         }
+        
+        //Make sure this is NOT in the if(isNew) {} block of code
+        NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+        [defaultCenter addObserver:self
+                          selector:@selector(updateFonts)
+                              name:UIContentSizeCategoryDidChangeNotification
+                            object:nil];
     }
     return self;
+}
+
+- (void)dealloc{
+    
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter removeObserver:self];
 }
 
 - (void)save:(id)sender{
