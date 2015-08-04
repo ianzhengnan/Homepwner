@@ -25,24 +25,24 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Spj-ma-WIo">
                         <rect key="frame" x="8" y="2" width="40" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="1Uw-lE-FZC"/>
+                            <constraint firstAttribute="width" constant="40" placeholder="YES" id="1Uw-lE-FZC"/>
                             <constraint firstAttribute="height" constant="40" id="6xi-uA-Aug"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBv-Za-C0d">
-                        <rect key="frame" x="53" y="2" width="209" height="22"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrG-wh-6ra">
-                        <rect key="frame" x="53" y="22" width="209" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrG-wh-6ra">
+                        <rect key="frame" x="53" y="24" width="209" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.64918718434343436" green="0.64918718434343436" blue="0.64918718434343436" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZx-ET-Qgi">
                         <rect key="frame" x="270" y="11" width="42" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="247" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBv-Za-C0d">
+                        <rect key="frame" x="53" y="2" width="209" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -59,11 +59,13 @@
                     <constraint firstItem="mYS-Ei-jcA" firstAttribute="bottom" secondItem="Spj-ma-WIo" secondAttribute="bottom" id="d0I-hK-6co"/>
                     <constraint firstItem="Spj-ma-WIo" firstAttribute="leading" secondItem="hec-1O-Ooq" secondAttribute="leadingMargin" constant="1" id="hTo-Xc-Iev"/>
                     <constraint firstItem="eZx-ET-Qgi" firstAttribute="trailing" secondItem="hec-1O-Ooq" secondAttribute="trailingMargin" constant="2" id="kU1-rj-Bjz"/>
-                    <constraint firstItem="qrG-wh-6ra" firstAttribute="top" secondItem="oBv-Za-C0d" secondAttribute="bottom" constant="1" id="otn-Un-ZBz"/>
                     <constraint firstAttribute="centerY" secondItem="eZx-ET-Qgi" secondAttribute="centerY" id="p0n-2X-Txb"/>
+                    <constraint firstItem="qrG-wh-6ra" firstAttribute="top" relation="greaterThanOrEqual" secondItem="oBv-Za-C0d" secondAttribute="bottom" constant="1" id="tPR-eD-kRh"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="qrG-wh-6ra" secondAttribute="bottom" constant="-5" id="thn-Mc-21S"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="imageViewHeightConstraint" destination="6xi-uA-Aug" id="nWy-VI-qf6"/>
                 <outlet property="nameLable" destination="oBv-Za-C0d" id="ZQY-SP-fYz"/>
                 <outlet property="serialNumberLabel" destination="qrG-wh-6ra" id="LRa-6n-Iku"/>
                 <outlet property="thumbnailView" destination="Spj-ma-WIo" id="wjt-tX-HjM"/>
