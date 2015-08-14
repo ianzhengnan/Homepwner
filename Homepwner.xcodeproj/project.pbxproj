@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		155FAC251B7DEC7A00D489B9 /* Homepwner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 155FAC231B7DEC7A00D489B9 /* Homepwner.xcdatamodeld */; };
+		155FAC281B7DEF1F00D489B9 /* ImageTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 155FAC271B7DEF1F00D489B9 /* ImageTransformer.m */; };
+		155FAC2B1B7DFBDB00D489B9 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 155FAC2A1B7DFBDB00D489B9 /* Item.m */; };
 		1561464D1B5CC0E80009BA5F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1561464B1B5CC0E80009BA5F /* DetailViewController.m */; };
 		1561464E1B5CC0E80009BA5F /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1561464C1B5CC0E80009BA5F /* DetailViewController.xib */; };
 		156146521B5CF9970009BA5F /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 156146501B5CF9970009BA5F /* DatePickerViewController.m */; };
@@ -23,7 +26,6 @@
 		7D882AA01B4EA4DF0084D381 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D882A9E1B4EA4DF0084D381 /* LaunchScreen.xib */; };
 		7D882AAC1B4EA4DF0084D381 /* HomepwnerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D882AAB1B4EA4DF0084D381 /* HomepwnerTests.m */; };
 		7D882AB71B4EA6F80084D381 /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D882AB61B4EA6F80084D381 /* ItemViewController.m */; };
-		7D882ABA1B4EAA830084D381 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D882AB91B4EAA830084D381 /* Item.m */; };
 		7D882ABD1B4EACF00084D381 /* ItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D882ABC1B4EACF00084D381 /* ItemStore.m */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		155FAC241B7DEC7A00D489B9 /* Homepwner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Homepwner.xcdatamodel; sourceTree = "<group>"; };
+		155FAC261B7DEF1F00D489B9 /* ImageTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTransformer.h; sourceTree = "<group>"; };
+		155FAC271B7DEF1F00D489B9 /* ImageTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageTransformer.m; sourceTree = "<group>"; };
+		155FAC291B7DFBDB00D489B9 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		155FAC2A1B7DFBDB00D489B9 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		1561464A1B5CC0E80009BA5F /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		1561464B1B5CC0E80009BA5F /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		1561464C1B5CC0E80009BA5F /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
@@ -66,8 +73,6 @@
 		7D882AAB1B4EA4DF0084D381 /* HomepwnerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomepwnerTests.m; sourceTree = "<group>"; };
 		7D882AB51B4EA6F80084D381 /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
 		7D882AB61B4EA6F80084D381 /* ItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemViewController.m; sourceTree = "<group>"; };
-		7D882AB81B4EAA830084D381 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
-		7D882AB91B4EAA830084D381 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		7D882ABB1B4EACF00084D381 /* ItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemStore.h; sourceTree = "<group>"; };
 		7D882ABC1B4EACF00084D381 /* ItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,17 +128,20 @@
 				1561464F1B5CF9970009BA5F /* DatePickerViewController.h */,
 				156146501B5CF9970009BA5F /* DatePickerViewController.m */,
 				156146511B5CF9970009BA5F /* DatePickerViewController.xib */,
+				155FAC261B7DEF1F00D489B9 /* ImageTransformer.h */,
+				155FAC271B7DEF1F00D489B9 /* ImageTransformer.m */,
 				15A2EEEE1B6F1D5900B2D5AD /* ImageViewController.h */,
 				15A2EEEF1B6F1D5900B2D5AD /* ImageViewController.m */,
 				15FF45B51B6B3A24008A7689 /* ItemCell.h */,
 				15FF45B61B6B3A24008A7689 /* ItemCell.m */,
 				15FF45B81B6B3A75008A7689 /* ItemCell.xib */,
-				7D882AB81B4EAA830084D381 /* Item.h */,
-				7D882AB91B4EAA830084D381 /* Item.m */,
 				7D882ABB1B4EACF00084D381 /* ItemStore.h */,
 				7D882ABC1B4EACF00084D381 /* ItemStore.m */,
 				156146541B5D143F0009BA5F /* ImageStore.h */,
 				156146551B5D143F0009BA5F /* ImageStore.m */,
+				155FAC231B7DEC7A00D489B9 /* Homepwner.xcdatamodeld */,
+				155FAC291B7DFBDB00D489B9 /* Item.h */,
+				155FAC2A1B7DFBDB00D489B9 /* Item.m */,
 				7D882A991B4EA4DF0084D381 /* Main.storyboard */,
 				7D882A9C1B4EA4DF0084D381 /* Images.xcassets */,
 				7D882A9E1B4EA4DF0084D381 /* LaunchScreen.xib */,
@@ -271,13 +279,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				155FAC2B1B7DFBDB00D489B9 /* Item.m in Sources */,
 				15FF45B71B6B3A24008A7689 /* ItemCell.m in Sources */,
+				155FAC281B7DEF1F00D489B9 /* ImageTransformer.m in Sources */,
 				156146521B5CF9970009BA5F /* DatePickerViewController.m in Sources */,
-				7D882ABA1B4EAA830084D381 /* Item.m in Sources */,
 				7D882A981B4EA4DF0084D381 /* ViewController.m in Sources */,
 				15A2EEF01B6F1D5900B2D5AD /* ImageViewController.m in Sources */,
 				7D882ABD1B4EACF00084D381 /* ItemStore.m in Sources */,
 				7D882AB71B4EA6F80084D381 /* ItemViewController.m in Sources */,
+				155FAC251B7DEC7A00D489B9 /* Homepwner.xcdatamodeld in Sources */,
 				156146561B5D143F0009BA5F /* ImageStore.m in Sources */,
 				7D882A951B4EA4DF0084D381 /* AppDelegate.m in Sources */,
 				7D882A921B4EA4DF0084D381 /* main.m in Sources */,
@@ -490,6 +500,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		155FAC231B7DEC7A00D489B9 /* Homepwner.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				155FAC241B7DEC7A00D489B9 /* Homepwner.xcdatamodel */,
+			);
+			currentVersion = 155FAC241B7DEC7A00D489B9 /* Homepwner.xcdatamodel */;
+			path = Homepwner.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7D882A841B4EA4DF0084D381 /* Project object */;
 }
