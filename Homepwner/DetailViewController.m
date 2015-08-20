@@ -11,6 +11,7 @@
 #import "DatePickerViewController.h"
 #import "ImageStore.h"
 #import "ItemStore.h"
+#import "AssetTypeViewController.h"
 
 @interface DetailViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate,UITextFieldDelegate, UIPopoverControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
@@ -28,9 +29,20 @@
 @property (weak, nonatomic) IBOutlet UILabel *serialNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *valueLabel;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *assetTypeButton;
 @end
 
 @implementation DetailViewController
+
+- (IBAction)showAssetTypePicker:(id)sender {
+    
+    [self.view endEditing:YES];
+    
+    AssetTypeViewController *avc = [[AssetTypeViewController alloc] init];
+    avc.item = self.item;
+    
+    [self.navigationController pushViewController:avc animated:YES];
+}
 
 - (void)viewDidLoad{
 
@@ -232,6 +244,13 @@
     UIImage *imageToDisplay = [[ImageStore sharedStore] imageForKey:imageKey];
     
     self.imageView.image = imageToDisplay;
+    
+    NSString *typeLabel = [self.item.assetType valueForKey:@"label"];
+    if (!typeLabel) {
+        typeLabel = @"None";
+    }
+    
+    self.assetTypeButton.title = [NSString stringWithFormat:@"Type: %@", typeLabel];
     
     [self updateFonts];
 }

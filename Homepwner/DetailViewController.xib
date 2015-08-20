@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController">
             <connections>
                 <outlet property="SerialNumberField" destination="oy8-uo-Hgs" id="xL1-hb-a4x"/>
+                <outlet property="assetTypeButton" destination="M3g-RS-OmT" id="adr-WD-0Fw"/>
                 <outlet property="cameraButton" destination="PWE-MM-q8v" id="3Vz-Yk-yxq"/>
                 <outlet property="dateLable" destination="CI0-Gb-CUr" id="95s-Oy-aPI"/>
                 <outlet property="nameField" destination="8Sf-5e-syn" id="Wlc-fM-shJ"/>
@@ -63,6 +64,14 @@
                         <outlet property="delegate" destination="-1" id="pLO-LO-2jm"/>
                     </connections>
                 </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Sf-5e-syn">
+                    <rect key="frame" x="72" y="84" width="281" height="32"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="ZG6-F1-D4x"/>
+                    </connections>
+                </textField>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K5A-Dr-8e8">
                     <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                     <constraints>
@@ -74,16 +83,13 @@
                                 <action selector="takePicture:" destination="-1" id="EYQ-kX-veC"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem title="Item" width="301" id="M3g-RS-OmT">
+                            <connections>
+                                <action selector="showAssetTypePicker:" destination="-1" id="uOv-Lt-DDe"/>
+                            </connections>
+                        </barButtonItem>
                     </items>
                 </toolbar>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Sf-5e-syn">
-                    <rect key="frame" x="72" y="84" width="281" height="32"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="ZG6-F1-D4x"/>
-                    </connections>
-                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>

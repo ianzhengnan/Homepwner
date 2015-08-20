@@ -10,6 +10,7 @@
 		155FAC251B7DEC7A00D489B9 /* Homepwner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 155FAC231B7DEC7A00D489B9 /* Homepwner.xcdatamodeld */; };
 		155FAC281B7DEF1F00D489B9 /* ImageTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 155FAC271B7DEF1F00D489B9 /* ImageTransformer.m */; };
 		155FAC2B1B7DFBDB00D489B9 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 155FAC2A1B7DFBDB00D489B9 /* Item.m */; };
+		155FAC2E1B85F25D00D489B9 /* AssetTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 155FAC2D1B85F25D00D489B9 /* AssetTypeViewController.m */; };
 		1561464D1B5CC0E80009BA5F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1561464B1B5CC0E80009BA5F /* DetailViewController.m */; };
 		1561464E1B5CC0E80009BA5F /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1561464C1B5CC0E80009BA5F /* DetailViewController.xib */; };
 		156146521B5CF9970009BA5F /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 156146501B5CF9970009BA5F /* DatePickerViewController.m */; };
@@ -45,6 +46,8 @@
 		155FAC271B7DEF1F00D489B9 /* ImageTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageTransformer.m; sourceTree = "<group>"; };
 		155FAC291B7DFBDB00D489B9 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		155FAC2A1B7DFBDB00D489B9 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		155FAC2C1B85F25D00D489B9 /* AssetTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetTypeViewController.h; sourceTree = "<group>"; };
+		155FAC2D1B85F25D00D489B9 /* AssetTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetTypeViewController.m; sourceTree = "<group>"; };
 		1561464A1B5CC0E80009BA5F /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		1561464B1B5CC0E80009BA5F /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		1561464C1B5CC0E80009BA5F /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
@@ -132,6 +135,8 @@
 				155FAC271B7DEF1F00D489B9 /* ImageTransformer.m */,
 				15A2EEEE1B6F1D5900B2D5AD /* ImageViewController.h */,
 				15A2EEEF1B6F1D5900B2D5AD /* ImageViewController.m */,
+				155FAC2C1B85F25D00D489B9 /* AssetTypeViewController.h */,
+				155FAC2D1B85F25D00D489B9 /* AssetTypeViewController.m */,
 				15FF45B51B6B3A24008A7689 /* ItemCell.h */,
 				15FF45B61B6B3A24008A7689 /* ItemCell.m */,
 				15FF45B81B6B3A75008A7689 /* ItemCell.xib */,
@@ -284,6 +289,7 @@
 				155FAC281B7DEF1F00D489B9 /* ImageTransformer.m in Sources */,
 				156146521B5CF9970009BA5F /* DatePickerViewController.m in Sources */,
 				7D882A981B4EA4DF0084D381 /* ViewController.m in Sources */,
+				155FAC2E1B85F25D00D489B9 /* AssetTypeViewController.m in Sources */,
 				15A2EEF01B6F1D5900B2D5AD /* ImageViewController.m in Sources */,
 				7D882ABD1B4EACF00084D381 /* ItemStore.m in Sources */,
 				7D882AB71B4EA6F80084D381 /* ItemViewController.m in Sources */,

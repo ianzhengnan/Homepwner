@@ -155,6 +155,49 @@
     return item;
 }
 
+- (NSArray *)allAssetTypes{
+    
+    if (!_allAssetTypes) {
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        
+        NSEntityDescription *e = [NSEntityDescription entityForName:@"AssetType"
+                                             inManagedObjectContext:self.context];
+        
+        request.entity = e;
+        
+        NSError *error = nil;
+        NSArray *result = [self.context executeFetchRequest:request
+                                                      error:&error];
+        if (!result) {
+            [NSException raise:@"Fetch failed"
+                        format:@"Reason: %@",[error localizedDescription]];
+        }
+        _allAssetTypes = [result mutableCopy];
+    }
+    
+    //Is this the first time the program is being run?
+    if ([_allAssetTypes count] == 0) {
+        NSManagedObject *type;
+        
+        type = [NSEntityDescription insertNewObjectForEntityForName:@"AssetType"
+                                             inManagedObjectContext:self.context];
+        [type setValue:@"Furniture" forKey:@"label"];
+        [_allAssetTypes addObject:type];
+        
+        type = [NSEntityDescription insertNewObjectForEntityForName:@"AssetType"
+                                             inManagedObjectContext:self.context];
+        [type setValue:@"Jewelry" forKey:@"label"];
+        [_allAssetTypes addObject:type];
+        
+        type = [NSEntityDescription insertNewObjectForEntityForName:@"AssetType"
+                                             inManagedObjectContext:self.context];
+        [type setValue:@"Electronics" forKey:@"label"];
+        [_allAssetTypes addObject:type];
+        
+    }
+    return _allAssetTypes;
+}
+
 - (void)moveItemAtIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex{
 
     if (fromIndex == toIndex) {
@@ -165,6 +208,27 @@
     
     [self.privateItems removeObjectAtIndex:fromIndex];
     [self.privateItems insertObject:item atIndex:toIndex];
+    
+    double lowerBound = 0.0;
+    
+    if (toIndex > 0) {
+        lowerBound = [self.privateItems[(toIndex - 1)] orderingValue];
+    }else{
+        lowerBound = [self.privateItems[1] orderingValue] - 2.0;
+    }
+    
+    double upperBound = 0.0;
+    
+    if (toIndex < [self.privateItems count] - 1) {
+        upperBound = [self.privateItems[(toIndex + 1)] orderingValue];
+    }else{
+        upperBound = [self.privateItems[(toIndex - 1)] orderingValue] + 2.0;
+    }
+    
+    double newOrderValue = (lowerBound + upperBound) /2.0;
+    
+    NSLog(@"moving to order %f", newOrderValue);
+    item.orderingValue = newOrderValue;
     
 }
 
