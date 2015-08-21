@@ -14,7 +14,7 @@
 #import "ImageStore.h"
 #import "ImageViewController.h"
 
-@interface ItemViewController () <UIPopoverControllerDelegate>
+@interface ItemViewController () <UIPopoverControllerDelegate, UIDataSourceModelAssociation>
 
 @property (nonatomic, strong)UIPopoverController *imagePopover;
 
@@ -28,6 +28,9 @@
     if (self) {
         UINavigationItem *navItem = self.navigationItem;
         navItem.title = @"Homepwner";
+        
+        self.restorationIdentifier = NSStringFromClass([self class]);
+        self.restorationClass = [self class];
         
         //create a new bar button item that will send addNewItem: to
         //ItemsViewController
@@ -58,12 +61,6 @@
     
     Item *newItem = [[ItemStore sharedStore] createItem];
     
-//    NSInteger lastRow = [[[ItemStore sharedStore] allItems] indexOfObject:newItem];
-//    
-//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
-//    
-//    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
-    
     DetailViewController *detailViewController = [[DetailViewController alloc] initForNewItem:YES];
     
     detailViewController.item = newItem;
@@ -73,6 +70,8 @@
     };
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+    
+    navController.restorationIdentifier = NSStringFromClass([navController class]);
     
     navController.modalPresentationStyle = UIModalPresentationFormSheet;
     
@@ -160,6 +159,41 @@
 
 }
 
+- (NSString *)modelIdentifierForElementAtIndexPath:(NSIndexPath *)idx inView:(UIView *)view{
+
+    NSString *identifier = nil;
+    
+    if (idx && view) {
+        Item *item = [[ItemStore sharedStore] allItems][idx.row];
+        identifier = item.itemKey;
+    }
+    return identifier;
+}
+
+
+- (NSIndexPath *)indexPathForElementWithModelIdentifier:(NSString *)identifier inView:(UIView *)view{
+
+    NSIndexPath *indexPath = nil;
+    
+    if (identifier && view) {
+        NSArray *items = [[ItemStore sharedStore] allItems];
+        for (Item *item in items) {
+            if ([identifier isEqualToString:item.itemKey]) {
+                int row = [items indexOfObjectIdenticalTo:item];
+                indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+                break;
+            }
+        }
+    }
+    return indexPath;
+}
+
+#pragma mark Restoration protocol implementation
++ (UIViewController *)viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder{
+
+    return [[self alloc] init];
+}
+
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController{
 
     self.imagePopover = nil;
@@ -240,6 +274,20 @@
     [self.tableView reloadData];
 }
 
+- (void)encodeRestorableStateWithCoder:(NSCoder *)coder{
+
+    [coder encodeBool:self.isEditing forKey:@"TableViewIsEditing"];
+    
+    [super encodeRestorableStateWithCoder:coder];
+}
+
+- (void)decodeRestorableStateWithCoder:(NSCoder *)coder{
+
+    self.editing = [coder decodeObjectForKey:@"TableViewIsEditing"];
+    
+    [super decodeRestorableStateWithCoder:coder];
+}
+
 - (void)viewDidLoad{
     
     [super viewDidLoad];
@@ -249,6 +297,8 @@
     UINib *nib = [UINib nibWithNibName:@"ItemCell" bundle:nil];
     
     [self.tableView registerNib:nib forCellReuseIdentifier:@"ItemCell"];
+    
+    self.tableView.restorationIdentifier = @"ItemsViewControllerTableView";
     
 }
 

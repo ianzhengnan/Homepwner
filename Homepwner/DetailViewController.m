@@ -279,11 +279,55 @@
     self.navigationItem.title = _item.itemName;
 }
 
+- (void)encodeRestorableStateWithCoder:(NSCoder *)coder{
+
+    [coder encodeObject:self.item forKey:@"item.itemKey"];
+    
+    //save changes into item
+    self.item.itemName = self.nameField.text;
+    self.item.serialNumber = self.SerialNumberField.text;
+    self.item.valueInDollars = [self.valueField.text intValue];
+    
+    //Have store save changes to disk
+    [[ItemStore sharedStore] saveChanges];
+    
+    [super encodeRestorableStateWithCoder:coder];
+}
+
+- (void)decodeRestorableStateWithCoder:(NSCoder *)coder{
+
+    NSString *itemKey = [coder decodeObjectForKey:@"item.itemKey"];
+    
+    for (Item *item in [[ItemStore sharedStore] allItems]) {
+        if ([itemKey isEqualToString:item.itemKey]) {
+            self.item = item;
+            break;
+        }
+    }
+    
+    [super decodeRestorableStateWithCoder:coder];
+}
+
+#pragma mark Restoration
++ (UIViewController *)viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder{
+
+    BOOL isNew = NO;
+    if ([identifierComponents count]) {
+        isNew = YES;
+    }
+    
+    return [[self alloc] initForNewItem:isNew];
+}
+
 - (instancetype)initForNewItem:(BOOL)isNew{
  
     self = [super initWithNibName:nil bundle:nil];
     
     if (self) {
+        
+        self.restorationIdentifier = NSStringFromClass([self class]);
+        self.restorationClass = [self class];
+        
         if (isNew) {
             UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(save:)];
             

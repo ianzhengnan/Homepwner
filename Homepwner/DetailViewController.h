@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class Item;
-@interface DetailViewController : UIViewController
+@interface DetailViewController : UIViewController <UIViewControllerRestoration>
 
 @property (nonatomic, strong) Item *item;
 

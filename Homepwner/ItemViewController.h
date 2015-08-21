@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface ItemViewController : UITableViewController
+@interface ItemViewController : UITableViewController <UIViewControllerRestoration>
 
 
 
