@@ -12,6 +12,7 @@
 #import "ImageStore.h"
 #import "ItemStore.h"
 #import "AssetTypeViewController.h"
+#import "AppDelegate.h"
 
 @interface DetailViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate,UITextFieldDelegate, UIPopoverControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
@@ -270,7 +271,21 @@
     Item *item = self.item;
     item.itemName = self.nameField.text;
     item.serialNumber = self.SerialNumberField.text;
-    item.valueInDollars = [self.valueField.text intValue];
+    
+    int newValue = [self.valueField.text intValue];
+    
+    //Is it changed?
+    if (newValue != item.valueInDollars) {
+        //Put it in the item
+        item.valueInDollars = newValue;
+        
+        //Store it as the default value for the next item
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setInteger:newValue
+                      forKey:NextItemValuePrefsKey];
+    }
+    
+    
 }
 
 - (void)setItem:(Item *)item{

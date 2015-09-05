@@ -9,6 +9,7 @@
 #import "ItemStore.h"
 #import "Item.h"
 #import "ImageStore.h"
+#import "AppDelegate.h"
 
 @import CoreData;
 
@@ -82,14 +83,6 @@
 
     self = [super init];
     if (self) {
-//        //_privateItems = [[NSMutableArray alloc] init];
-//        
-//        NSString *path = [self itemArchivePath];
-//        
-//        _privateItems = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-//        if (!_privateItems) {
-//            _privateItems = [[NSMutableArray alloc] init];
-//        }
         
         //Read in Homepwner.xcdatamodeld
         _model = [NSManagedObjectModel mergedModelFromBundles:nil];
@@ -149,6 +142,12 @@
     Item *item = [NSEntityDescription insertNewObjectForEntityForName:@"Item" inManagedObjectContext:self.context];
    
     item.orderingValue = order;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    item.valueInDollars = [defaults integerForKey:NextItemValuePrefsKey];
+    item.itemName = [defaults objectForKey:NextItemNamePrefsKey];
+    
+    NSLog(@"defaults = %@", [defaults dictionaryRepresentation]);
     
     [self.privateItems addObject:item];
     
@@ -242,11 +241,6 @@
 }
 
 - (BOOL)saveChanges{
-
-//    NSString *path = [self itemArchivePath];
-//    
-//    //Return YES on success
-//    return [NSKeyedArchiver archiveRootObject:self.privateItems toFile:path];
 
     NSError *error;
     BOOL successful = [self.context save: &error];
